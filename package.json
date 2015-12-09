@@ -3,17 +3,18 @@
   "description": "This is a excercise to show some web skills for interview.",
   "version": "0.1.0",
   "dependencies": {
-    "express": "~4.0.0",
-    "jade": "1.11.0",
-    "body-parser": "~1.0.0",
-    "method-override": "~1.0.0",
-    "path": "~0.4.9",
-    "mongoose": "~3.5.5",
     "backbone": "^1.2.3",
+    "body-parser": "~1.0.0",
+    "express": "~4.0.0",
     "hbsfy": "^2.3.1",
+    "jade": "1.11.0",
     "jquery": "^2.1.4",
-    "underscore": "^1.8.3",
-    "rsvp": "3.1.0"
+    "method-override": "~1.0.0",
+    "mongodb": "^2.1.0",
+    "mongoose": "~3.5.5",
+    "path": "~0.4.9",
+    "rsvp": "3.1.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "jasmine-ajax": "^3.2.0",
