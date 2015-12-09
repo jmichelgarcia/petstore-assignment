@@ -14353,12 +14353,12 @@ return jQuery;
 }.call(this));
 
 },{}],6:[function(require,module,exports){
-var service = require('./components/pets/list/services/pet.service');
+var service = require('./services/pet.service');
 
 service.allPets().then(function(pets) {
   console.log(pets);
 })
-},{"./components/pets/list/services/pet.service":9}],7:[function(require,module,exports){
+},{"./services/pet.service":9}],7:[function(require,module,exports){
 var Backbone = require('backbone');
 var PetModel = require('../models/pet.model');
 

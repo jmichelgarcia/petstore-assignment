@@ -1,6 +1,7 @@
 build/
 db/
 bower_components/
+src/client/lib/
 node_modules/
 bundle.js
 specs.js

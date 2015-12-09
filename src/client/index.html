@@ -1,11 +1,111 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>My Sample Project</title>
-        <link rel="stylesheet" type="text/css" href="app/assets/styles.css">
-        <script type="text/javascript" src="dist/app.min.js"></script>
-    </head>
-    <body>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Petstore - Assignment</title>
+		<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css" >
+		<link rel="stylesheet" type="text/css" href="app/assets/styles.css">
+		<script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="dist/app.min.js"></script>
+	</head>
+	<body>
+		<div class="assignment-masthead">
+			<div class="container">
+				<nav class="assignment-nav">
+					<a class="assignment-nav-item active" href="#">Login</a>
+				</nav>
+			</div>
+		</div>
+		<div class="container">
+			<div class="assignment-header">
+				<h1 class="assignment-title">Javascript Excercise</h1>
+				<p class="lead assignment-description">A programming assignment for frontend developer position by Advisory Key</p>
+			</div>
+			<div class="row">
+				<div class="col-sm-8 assignment-main">
+					<div class="assignment-post">
+						<h2 class="assignment-post-title">Pet Store</h2>
+						<p>Simple application showing some frontend developer skills using technologies: Backbone.js, Browserify, Grunt.js, Jasmine.js</p>
+						<hr>
 
-    </body>
+						<div class="pet-app">
+							
+							<div class="pet-create">
+								<h3>Have a new Pet</h3>
+								<div class="panel panel-default"> 
+									<div class="panel-heading"> 
+										Create new Pet
+									</div> 
+									<div class="panel-body"> 
+										<form>
+											<div class="form-group">
+												<div class="input-group">
+													<span class="input-group-addon" id="basic-addon1">Name</span>
+													<input type="text" class="form-control" placeholder="Pet Name">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="input-group">
+													<span class="input-group-addon" id="basic-addon1">Status</span>
+													<input type="text" class="form-control" placeholder="Pet Status">
+												</div>
+											</div>
+											<div>
+												<button type="button" class="btn btn-default btn-lg">Create</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+							<div class="pet-list">
+								<h3>Manage your Pets</h3>
+								<div class="panel panel-default">
+									<div class="panel-heading">List of Pets</div>
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th>Name</th>
+												<th>Status</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Doge</td>
+												<td>Angry</td>
+												<td><button type="button" class="btn btn-danger">Delete</button></td>
+											</tr>
+											<tr>
+												<td>Kitty</td>
+												<td>Calm</td>
+												<td><button type="button" class="btn btn-danger">Delete</button></td>
+											</tr>
+											<tr>
+												<td>Birdy</td>
+												<td>Old</td>
+												<td><button type="button" class="btn btn-danger">Delete</button></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3 col-sm-offset-1 assignment-sidebar">
+					<div class="sidebar-module sidebar-module-inset">
+						<h4>About</h4>
+						<p>Pet Store Service component exposing Pet Store Operations as a rest API / jSON.</p>
+						<p>Pet Store Front End component consuming the rest API and enabling user interaction with the Pet Store.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
