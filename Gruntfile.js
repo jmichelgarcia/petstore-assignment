@@ -3,17 +3,17 @@ module.exports = function(grunt) {
   grunt.initConfig({
     browserify: {
       client: {
-        src: ['src/client/app/**/*.js'],
+        src: ['src/client/app/**/*.js', '!src/client/app/**/*.spec.js'],
         dest: 'src/client/dist/app.js',
         options: {
           watch: true,
-          keepAlive: true,
+          keepAlive: false,
           transform: ['hbsfy']
         }
       },
       specs: {
         src: ["src/client/**/*.spec.js"],
-        dest: "src/client/dist/specs.js",
+        dest: "src/client/dist/all.spec.js",
         options: {
           browserifyOptions: {
             debug: false,
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
     jasmine: {
       src: [],
       options: {
-        specs: 'src/client/dist/specs.js',
+        specs: 'src/client/dist/all.spec.js',
         vendor: []
       }
     },
@@ -55,5 +55,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['browserify']);
+  grunt.registerTask('dist', ['browserify:client', 'uglify']);
   grunt.registerTask('test', ['browserify:specs', 'jasmine']);
 };
