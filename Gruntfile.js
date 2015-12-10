@@ -7,12 +7,12 @@ module.exports = function(grunt) {
         dest: 'src/client/dist/app.js',
         options: {
           watch: true,
-          keepAlive: false,
+          keepAlive: true,
           transform: ['hbsfy']
         }
       },
       specs: {
-        src: ["src/client/**/*.spec.js"],
+        src: ["src/client/app/**/*.spec.js"],
         dest: "src/client/dist/all.spec.js",
         options: {
           browserifyOptions: {

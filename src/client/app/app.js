@@ -1,5 +1,4 @@
-var service = require('./services/pet.service');
+var $ = require('jquery');
+var AppView = require('./components/app/views/app.view');
 
-service.allPets().then(function(pets) {
-  console.log(pets);
-})
+$('.pet-app').append(new AppView().render().el);

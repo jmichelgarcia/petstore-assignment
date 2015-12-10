@@ -65,7 +65,6 @@ var allPets = function() {
     return new RSVP.Promise(function(resolve, reject) {
       $.ajax({
         url: '/api/pets/' + id,
-        dataType: 'json',
         method: 'DELETE'
       }).done(function() {
         resolve();

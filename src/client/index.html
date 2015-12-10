@@ -8,9 +8,6 @@
 		<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css" >
 		<link rel="stylesheet" type="text/css" href="app/assets/styles.css">
-		<script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
-		<script type="text/javascript" src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="dist/app.min.js"></script>
 	</head>
 	<body>
 		<div class="assignment-masthead">
@@ -32,70 +29,8 @@
 						<p>Simple application showing some frontend developer skills using technologies: Backbone.js, Browserify, Grunt.js, Jasmine.js</p>
 						<hr>
 
-						<div class="pet-app">
-							
-							<div class="pet-create">
-								<h3>Have a new Pet</h3>
-								<div class="panel panel-default"> 
-									<div class="panel-heading"> 
-										Create new Pet
-									</div> 
-									<div class="panel-body"> 
-										<form>
-											<div class="form-group">
-												<div class="input-group">
-													<span class="input-group-addon" id="basic-addon1">Name</span>
-													<input type="text" class="form-control" placeholder="Pet Name">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group">
-													<span class="input-group-addon" id="basic-addon1">Status</span>
-													<input type="text" class="form-control" placeholder="Pet Status">
-												</div>
-											</div>
-											<div>
-												<button type="button" class="btn btn-default btn-lg">Create</button>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
+						<div class="pet-app"></div>
 
-							<div class="pet-list">
-								<h3>Manage your Pets</h3>
-								<div class="panel panel-default">
-									<div class="panel-heading">List of Pets</div>
-									<table class="table table-hover">
-										<thead>
-											<tr>
-												<th>Name</th>
-												<th>Status</th>
-												<th>Action</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>Doge</td>
-												<td>Angry</td>
-												<td><button type="button" class="btn btn-danger">Delete</button></td>
-											</tr>
-											<tr>
-												<td>Kitty</td>
-												<td>Calm</td>
-												<td><button type="button" class="btn btn-danger">Delete</button></td>
-											</tr>
-											<tr>
-												<td>Birdy</td>
-												<td>Old</td>
-												<td><button type="button" class="btn btn-danger">Delete</button></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-
-						</div>
 					</div>
 				</div>
 				<div class="col-sm-3 col-sm-offset-1 assignment-sidebar">
@@ -107,5 +42,9 @@
 				</div>
 			</div>
 		</div>
+
+		<script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="dist/app.js"></script>
 	</body>
 </html>
