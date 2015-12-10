@@ -22,3 +22,7 @@ Navigate to project root and type grunt dist
 Demo Screenshot
 ---------------
 ![Demo](/demo-screen.jpg?raw=true "Demo")
+
+Passing Specs Screenshot
+---------------
+![Specs](/demo-tests.jpg?raw=true "Specs")
