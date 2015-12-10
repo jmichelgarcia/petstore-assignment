@@ -1,8 +1,8 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
-var template = require('../templates/pet-list.hbs');
 var PetCollection = require('../collections/pet.collection');
 var PetItemView = require('./petItem.view');
+var template = require('../templates/pet-list.hbs');
 
 module.exports = Backbone.View.extend({
   className: 'pet-list',

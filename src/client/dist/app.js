@@ -15548,7 +15548,7 @@ module.exports = Backbone.View.extend({
   },
 
   clearForm: function() {
-    this.$el.find('.pet-name').val('');
+    this.$el.find('.pet-name').val('').focus();
     this.$el.find('.pet-status').val('');
   },
 
@@ -15604,8 +15604,8 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 
 },{"hbsfy/runtime":22}],34:[function(require,module,exports){
 var Backbone = require('backbone');
-var template = require('../templates/pet-item.hbs');
 var PetModel = require('../models/pet.model');
+var template = require('../templates/pet-item.hbs');
 
 module.exports = Backbone.View.extend({
   tagName: 'tr',
@@ -15616,13 +15616,7 @@ module.exports = Backbone.View.extend({
     'click button.delete': 'didClickDeleteButton'
   },
 
-  initialize: function() {
-    if (!(this.model instanceof PetModel)) {
-      throw new Error('model is not of correct type');
-    }
-  },
-
-  didClickDeleteButton: function(e) {
+  didClickDeleteButton: function() {
     this.trigger('petItem:delete', this.model.toJSON());
   },
 

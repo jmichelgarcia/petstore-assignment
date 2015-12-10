@@ -1,6 +1,6 @@
 var Backbone = require('backbone');
-var template = require('../templates/pet-item.hbs');
 var PetModel = require('../models/pet.model');
+var template = require('../templates/pet-item.hbs');
 
 module.exports = Backbone.View.extend({
   tagName: 'tr',
@@ -11,7 +11,7 @@ module.exports = Backbone.View.extend({
     'click button.delete': 'didClickDeleteButton'
   },
 
-  didClickDeleteButton: function(e) {
+  didClickDeleteButton: function() {
     this.trigger('petItem:delete', this.model.toJSON());
   },
 

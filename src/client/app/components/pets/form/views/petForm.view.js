@@ -35,7 +35,7 @@ module.exports = Backbone.View.extend({
   },
 
   clearForm: function() {
-    this.$el.find('.pet-name').val('');
+    this.$el.find('.pet-name').val('').focus();
     this.$el.find('.pet-status').val('');
   },
 
