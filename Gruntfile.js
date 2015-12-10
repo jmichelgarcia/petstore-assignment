@@ -6,8 +6,8 @@ module.exports = function(grunt) {
         src: ['src/client/app/**/*.js', '!src/client/app/**/*.spec.js'],
         dest: 'src/client/dist/app.js',
         options: {
-          watch: true,
-          keepAlive: true,
+          watch: false,
+          keepAlive: false,
           transform: ['hbsfy']
         }
       },
