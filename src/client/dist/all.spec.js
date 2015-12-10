@@ -17547,12 +17547,6 @@ module.exports = Backbone.View.extend({
     'click button.delete': 'didClickDeleteButton'
   },
 
-  initialize: function() {
-    if (!(this.model instanceof PetModel)) {
-      throw new Error('model is not of correct type');
-    }
-  },
-
   didClickDeleteButton: function(e) {
     this.trigger('petItem:delete', this.model.toJSON());
   },
@@ -17567,6 +17561,8 @@ module.exports = Backbone.View.extend({
 },{"../models/pet.model":35,"../templates/pet-item.hbs":37,"backbone":1}],40:[function(require,module,exports){
 var Backbone = require('backbone');
 var PetItemView = require('./petItem.view');
+var PetModel = require('../models/pet.model');
+var template = require('../templates/pet-item.hbs');
 
 describe('Pet Item View', function() {
   describe('type', function() {
@@ -17574,8 +17570,70 @@ describe('Pet Item View', function() {
       expect(PetItemView.prototype).toEqual(jasmine.any(Backbone.View));
     });
   });
+
+  describe('properties', function() {
+    it('tag name should be tr', function() {
+      expect(PetItemView.prototype.tagName).toEqual('tr');
+    });
+
+    it('template should be defined', function() {
+      expect(PetItemView.prototype.template).toEqual(template);
+    });
+  });
+
+  describe('api', function() {
+    describe('.didClickDeleteButton()', function() {
+      it('should be defined', function() {
+        expect(PetItemView.prototype.didClickDeleteButton).toEqual(jasmine.any(Function));
+      });
+
+      it('should trigger view event', function() {
+        var fakeJSON = {};
+
+        spyOn(PetItemView.prototype, 'trigger');
+        spyOn(PetModel.prototype, 'toJSON').and.returnValue(fakeJSON);
+
+        var view = new PetItemView({
+          model: new PetModel
+        });
+
+        view.didClickDeleteButton();
+
+        expect(view.trigger).toHaveBeenCalledWith('petItem:delete', fakeJSON);
+      });
+    });
+  });
+
+  describe('rendering', function() {
+    describe('.render()', function() {
+      beforeEach(function() {
+        this.view = new PetItemView({
+          model: new PetModel
+        });
+        this.view.render();
+      });
+
+      it('should return view itself', function() {
+        expect(this.view.render()).toBe(this.view);
+      });
+
+      it('should render template', function() {
+        expect(this.view.render().$el).toContainHtml(template);
+      });
+    });
+  });
+
+  describe('events', function() {
+    describe('dom', function() {
+      it('should be properly defined', function() {
+        expect(PetItemView.prototype.events).toEqual({
+          'click button.delete': 'didClickDeleteButton'
+        })
+      });
+    });
+  });
 });
-},{"./petItem.view":39,"backbone":1}],41:[function(require,module,exports){
+},{"../models/pet.model":35,"../templates/pet-item.hbs":37,"./petItem.view":39,"backbone":1}],41:[function(require,module,exports){
 var _ = require('underscore');
 var Backbone = require('backbone');
 var template = require('../templates/pet-list.hbs');

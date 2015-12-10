@@ -11,12 +11,6 @@ module.exports = Backbone.View.extend({
     'click button.delete': 'didClickDeleteButton'
   },
 
-  initialize: function() {
-    if (!(this.model instanceof PetModel)) {
-      throw new Error('model is not of correct type');
-    }
-  },
-
   didClickDeleteButton: function(e) {
     this.trigger('petItem:delete', this.model.toJSON());
   },
