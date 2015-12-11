@@ -1,6 +1,7 @@
 {
   "name": "petstore-excercise",
   "description": "This is a excercise to show some web skills for interview.",
+  "author": "Piotr Nowak <p.nowak2@gmail.com>",
   "version": "0.1.0",
   "dependencies": {
     "backbone": "^1.2.3",
