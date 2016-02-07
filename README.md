@@ -1,19 +1,16 @@
-Advisory Key Assignment
+Petstore Node.js app
 =======================
 
-This is a excercise to show some web skills for interview.
+This is based on a fork of https://github.com/pnowak2/petstore-excercise
 
 Download dependencies using npm and bower
 -----------------------------------------
 Navigate to project root folder and type npm install, then bower install
 
-Database used is MongoDB.
--------------------------
-In order to start DB, navigate to project root folder and type in terminal: mongod --dbpath "db"
-
 Start server
 ------------
-Navigate to project root folder and type node ./src/server/server
+Navigate to project root folder and type 
+./node_modules/json-server/bin/index.js --watch src/server/db.json --routes src/server/routes.json --static src/client
 
 Build dist
 ----------
