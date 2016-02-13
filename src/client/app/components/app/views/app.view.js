@@ -26,6 +26,8 @@ module.exports = Backbone.View.extend({
   },
 
   didRequestItemDeletion: function(itemData) {
+    console.log('received');
+    console.log(itemData);
     petService.deletePet(itemData.id).then(this.loadPets);
   },
 

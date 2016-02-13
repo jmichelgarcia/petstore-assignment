@@ -3,22 +3,29 @@ var PetModel = require('../models/pet.model');
 var template = require('../templates/pet-item.hbs');
 
 module.exports = Backbone.View.extend({
-  tagName: 'tr',
+    tagName: 'tr',
+    template: template,
 
-  template: template,
+    events: {
+        'click button.delete': 'didClickDeleteButton',
+        'click button.edit': 'didClickEditButton'
+    },
 
-  events: {
-    'click button.delete': 'didClickDeleteButton'
-  },
+    didClickDeleteButton: function () {
+        this.trigger('petItem:delete', this.model);
+    },
 
-  didClickDeleteButton: function() {
-    this.trigger('petItem:delete', this.model.toJSON());
-  },
+    didClickEditButton: function (e) {
+        console.log('didClickEditButton');
+        console.log('e');
+        console.log(e);
+    },
 
-  render: function() {
-    var html = this.template(this.model.toJSON());
-    this.$el.html(html);
 
-    return this;
-  }
+    render: function () {
+        var html = this.template(this.model.toJSON());
+        this.$el.html(html);
+        this.id = this.model.get('id');
+        return this;
+    }
 });

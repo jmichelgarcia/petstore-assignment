@@ -26,6 +26,7 @@ module.exports = Backbone.View.extend({
       });
 
       self.listenTo(view, 'petItem:delete', self.didRequestItemDelete);
+      self.listenTo(view, 'petItem:edit', self.didRequestItemEdit);
 
       return view;
     });
@@ -33,6 +34,10 @@ module.exports = Backbone.View.extend({
 
   didRequestItemDelete: function(itemData) {
     this.trigger('petList:delete', itemData);
+  },
+
+  didRequestItemEdit: function(itemData) {
+    this.trigger('petList:edit', itemData);
   },
 
   getTableBodyContainer: function() {

@@ -1,0 +1,19 @@
+{
+  "pets": [
+    {
+      "id": 1,
+      "name": "Droopy",
+      "status": "available"
+    },
+    {
+      "id": 2,
+      "name": "Pluto",
+      "status": "sold"
+    },
+    {
+      "name": "test",
+      "status": "test",
+      "id": 3
+    }
+  ]
+}

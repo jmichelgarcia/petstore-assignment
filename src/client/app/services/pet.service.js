@@ -11,7 +11,7 @@ var allPets = function() {
       }).done(function(pets) {
         var mapped = _.map(pets, function(pet) {
           return {
-            id: pet._id,
+            id: pet.id,
             name: pet.name,
             status: pet.status
           }
@@ -61,6 +61,25 @@ var allPets = function() {
     });
   },
 
+    editPetById = function(id, props) {
+      return new RSVP.Promise(function(resolve, reject) {
+        $.ajax({
+          url: '/api/pets/'+id ,
+          dataType: 'json',
+          method: 'PUT',
+          data: props
+        }).done(function(pet) {
+          resolve({
+            id: pet._id,
+            name: pet.name,
+            status: pet.status
+          });
+        }).fail(function(jqXHR, textStatus) {
+          reject(textStatus);
+        });
+      });
+    },
+
   deletePet = function(id) {
     return new RSVP.Promise(function(resolve, reject) {
       $.ajax({
@@ -77,6 +96,7 @@ var allPets = function() {
 module.exports = {
   allPets: allPets,
   petById: petById,
+  editPetById: editPetById,
   createPet: createPet,
   deletePet: deletePet
 }
