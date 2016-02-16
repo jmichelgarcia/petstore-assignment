@@ -1,6 +1,21 @@
-<td class="pet-name">{{name}}</td>
-<td class="pet-status">{{status}}</td>
-<td>
-    <button type="button" class="btn btn-info edit">Edit</button>
-    <button type="button" class="btn btn-danger delete">Delete</button>
-</td>
+{{#if editing}}
+<td><div>EDITING ! DAMN this is good !</div></td>
+<td></td>
+<td></td>
+{{else}}
+    <td>
+        <div class="pet-entry">
+            <label class="pet pet-name">{{name}}</label>
+            <input type="text" class="form-control pet pet-name" value={{name}} />
+        </div>
+    </td>
+    <td>
+        <div class="pet-entry">
+            <label class="pet pet-status">{{status}}</label>
+            <input type="text" class="form-control pet pet-status" value={{status}} />
+        </div>
+    </td>
+    <td class="btn-group">
+        <button type="button" class="btn btn-danger delete">Delete</button>
+    </td>
+{{/if}}

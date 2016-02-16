@@ -17662,12 +17662,11 @@ var petService = require('../../../services/pet.service');
 module.exports = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this, 'didLoadPets', 'loadPets');
-
     this.petFormView = new PetFormView;
     this.petListView = new PetListView;
-
     this.listenTo(this.petFormView, 'petForm:create', this.didRequestItemCreation);
     this.listenTo(this.petListView, 'petList:delete', this.didRequestItemDeletion);
+    this.listenTo(this.petListView, 'petList:update', this.didRequestItemEdit);
     this.loadPets();
   },
 
@@ -17679,17 +17678,21 @@ module.exports = Backbone.View.extend({
     petService.createPet(itemData).then(this.loadPets);
   },
 
+  didRequestItemEdit: function(itemData) {
+    console.log('app.view.js - didRequestItemEdit');
+  },
   didRequestItemDeletion: function(itemData) {
-    console.log('received');
-    console.log(itemData);
+    console.log('app.view.js - didRequestItemDeletion');
     petService.deletePet(itemData.id).then(this.loadPets);
   },
 
   didLoadPets: function(pets) {
+    console.log('app.view.js - didLoadPets');
     this.petListView.update(pets);
   },
 
   render: function() {
+    console.log('app.view.js - render');
     this.$el.append(this.petFormView.render().el);
     this.$el.append(this.petListView.render().el);
 
@@ -18115,12 +18118,19 @@ describe('Pet Collection', function() {
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
-  defaults: {
-    id:'',
-    name: '',
-    status: ''
-  }
-});
+
+        defaults: {
+            id: '',
+            name: '',
+            status: ''
+        },
+        initialize: function () {
+        },
+        validate: function (attrs) {
+            console.log('Validating');
+        }
+    }
+);
 },{"backbone":1}],36:[function(require,module,exports){
 var Backbone = require('backbone');
 var PetModel = require('./pet.model');
@@ -18140,14 +18150,24 @@ describe('Pet Model', function() {
 },{"./pet.model":35,"backbone":1}],37:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
-module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
+    return "<td><div>EDITING ! DAMN this is good !</div></td>\n<td></td>\n<td></td>\n";
+},"3":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<td class=\"pet-name\" contenteditable=\"true\">"
+  return "    <td>\n        <div class=\"pet-entry\">\n            <label class=\"pet pet-name\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</td>\n<td class=\"pet-status\" contenteditable=\"true\">"
+    + "</label>\n            <input type=\"text\" class=\"form-control pet pet-name edit\" value="
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + " />\n        </div>\n    </td>\n    <td>\n        <div class=\"pet-entry\">\n            <label class=\"pet pet-status\">"
     + alias4(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"status","hash":{},"data":data}) : helper)))
-    + "</td>\n<td>\n    <button type=\"button\" class=\"btn btn-info edit\">Edit</button>\n    <button type=\"button\" class=\"btn btn-danger delete\">Delete</button>\n</td>";
+    + "</label>\n            <input type=\"text\" class=\"form-control pet pet-status edit\" value="
+    + alias4(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"status","hash":{},"data":data}) : helper)))
+    + " />\n        </div>\n    </td>\n    <td class=\"btn-group\">\n        <button type=\"button\" class=\"btn btn-danger delete\">Delete</button>\n    </td>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.editing : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "");
 },"useData":true});
 
 },{"hbsfy/runtime":22}],38:[function(require,module,exports){
@@ -18163,24 +18183,45 @@ var PetModel = require('../models/pet.model');
 var template = require('../templates/pet-item.hbs');
 
 module.exports = Backbone.View.extend({
-  tagName: 'tr',
-  template: template,
+    tagName: 'tr',
+    template: template,
 
-  events: {
-    'click button.delete': 'didClickDeleteButton'
-  },
+    events: {
+        'click button.delete': 'didClickDeleteButton',
+        'click button.update': 'didClickEditButton',
+        'dblclick label.pet.pet-name': 'didDClickPet',
+        'dblclick label.pet.pet-status': 'didDClickPet'
 
-  didClickDeleteButton: function() {
-    this.trigger('petItem:delete', this.model);
-  },
+    },
 
+    didClickDeleteButton: function () {
+        this.trigger('petItem:delete', this.model);
+    },
 
-  render: function() {
-    var html = this.template(this.model.toJSON());
-    this.$el.html(html);
-    this.id = this.model.get('id');
-    return this;
-  }
+    didDClickPet: function () {
+
+        console.log('petItem.view.js - didDClickPet');
+        this.$el.find('.pet-entry .pet-name').toggleClass('edit');
+        this.$el.find('.pet-entry .pet-status').toggleClass('edit');
+
+        this.trigger('petItem:edit-mode', this.model);
+    },
+
+    didClickEditButton: function (e) {
+        console.log('petItem.view.js - didClickEditButton');
+        //this.$el.find('.pet-name').html('</form><td><input type="text" placeholder="Pet name" class="form-control" value="'+this.model.get('name') +'" /></td>');
+        //this.$el.find('.pet-status').html('<td><input type="text" placeholder="Pet status" class="form-control" value="'+this.model.get('status') +'" /></td>');
+        //this.$el.find('.btn-info.edit').hide();
+        //this.$el.find('.btn-group').prepend('<button type="button" class="btn btn-info update">Update</button>');
+    },
+
+    render: function () {
+        console.log('petItem.view.js - render');
+        var html = this.template(this.model.toJSON());
+        this.$el.html(html);
+        this.id = this.model.get('id');
+        return this;
+    }
 });
 },{"../models/pet.model":35,"../templates/pet-item.hbs":37,"backbone":1}],40:[function(require,module,exports){
 var Backbone = require('backbone');
@@ -18279,6 +18320,7 @@ module.exports = Backbone.View.extend({
   },
 
   createPetItemViews: function() {
+    console.log('petList.view.js - createPetItemViews');
     var self = this;
     return this.collection.map(function(petModel) {
       var view = new PetItemView({
@@ -18287,17 +18329,24 @@ module.exports = Backbone.View.extend({
 
       self.listenTo(view, 'petItem:delete', self.didRequestItemDelete);
       self.listenTo(view, 'petItem:edit', self.didRequestItemEdit);
+      self.listenTo(view, 'petItem:edit-mode', self.didRequestEditMode);
 
       return view;
     });
   },
 
   didRequestItemDelete: function(itemData) {
+    console.log('petList.view.js - didRequestItemDelete');
     this.trigger('petList:delete', itemData);
   },
 
   didRequestItemEdit: function(itemData) {
+    console.log('petList.view.js - didRequestItemEdit');
     this.trigger('petList:edit', itemData);
+  },
+
+  didRequestEditMode: function(itemData) {
+    console.log('petList.view.js - didRequestEditMode');
   },
 
   getTableBodyContainer: function() {
@@ -18305,6 +18354,7 @@ module.exports = Backbone.View.extend({
   },
 
   render: function() {
+    console.log('petList.view.js - render');
     this.$el.html(this.template());
 
     var tableBody = this.getTableBodyContainer(),

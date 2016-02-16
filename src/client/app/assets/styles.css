@@ -110,3 +110,31 @@ h6, .h6 {
   color: #999;
 }
 
+/*
+ * Inline edit of Pets
+ */
+
+tr.edit .pet-entry label
+{
+  display:none;
+}
+
+tr .pet-entry input
+{
+  display:none;
+}
+
+tr.edit .pet-entry input
+{
+  display:block;
+}
+
+.pet-entry label
+{
+  word-break: break-all;
+  padding: 5px 60px 5px 10px;
+  margin:0;
+  font-size:14px;
+  font-weight:normal;
+  width:100%;
+}

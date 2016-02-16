@@ -61,10 +61,10 @@ var allPets = function() {
     });
   },
 
-    editPetById = function(id, props) {
+    updatePet = function(props) {
       return new RSVP.Promise(function(resolve, reject) {
         $.ajax({
-          url: '/api/pets/'+id ,
+          url: '/api/pets/'+props.id ,
           dataType: 'json',
           method: 'PUT',
           data: props
@@ -96,7 +96,7 @@ var allPets = function() {
 module.exports = {
   allPets: allPets,
   petById: petById,
-  editPetById: editPetById,
+  updatePet: updatePet,
   createPet: createPet,
   deletePet: deletePet
 }
