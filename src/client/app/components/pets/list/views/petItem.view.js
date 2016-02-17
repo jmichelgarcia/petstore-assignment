@@ -9,11 +9,10 @@ module.exports = Backbone.View.extend({
 
     events: {
         'click button.delete': 'didClickDeleteButton',
-        'click .pet.lbl.pet-name': 'didClickPet',
-        'click .pet.lbl.pet-status': 'didClickPet',
-        'keypress .pet input': 'updateOnEnter',
-        'keydown .pet input': 'revertOnEscape',
-        'blur .pet input': 'close'
+        'click .pet.lbl.pet-name, .pet.lbl.pet-status': 'didClickPet',
+        'keypress .usr-input.pet': 'updateOnEnter',
+        'keydown .usr-input.pet': 'revertOnEscape',
+        'blur .usr-input.pet': 'close'
 
     },
 
@@ -49,8 +48,8 @@ module.exports = Backbone.View.extend({
         if (!this.$el.hasClass('edit')) {
             return;
         }
-        var pet_name = this.$el.find('.pet-entry input.pet-name').val().trim();
-        var pet_status = this.$el.find('.pet-entry input.pet-status').val().trim();
+        var pet_name = this.$el.find('.pet.usr-input.pet-name').val().trim();
+        var pet_status = this.$el.find('.pet.usr-input.pet-status').val().trim();
         this.trigger('petItem:edit', { id: this.id, name: pet_name, status: pet_status });
         this.toggle();
     },

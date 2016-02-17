@@ -16469,13 +16469,13 @@ module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":f
 
   return "<td>\n        <span class=\"pet lbl pet-name\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</span>\n        <input type=\"text\" class=\"pet pet-name\" value="
+    + "</span>\n        <input type=\"text\" class=\"pet usr-input pet-name\" value=\""
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "/>\n</td>\n<td>\n        <span class=\"pet lbl pet-status\">"
+    + "\" />\n</td>\n<td>\n        <span class=\"pet lbl pet-status\">"
     + alias4(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"status","hash":{},"data":data}) : helper)))
-    + "</span>\n        <input type=\"text\" class=\"pet pet-status\" value="
+    + "</span>\n        <input type=\"text\" class=\"pet usr-input pet-status\" value=\""
     + alias4(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"status","hash":{},"data":data}) : helper)))
-    + "/>\n</td>\n<td>\n    <button type=\"button\" class=\"btn btn-danger delete\">Delete</button>\n</td>\n\n";
+    + "\" />\n</td>\n<td>\n    <button type=\"button\" class=\"btn btn-danger delete\">Delete</button>\n</td>\n\n";
 },"useData":true});
 
 },{"hbsfy/runtime":23}],35:[function(require,module,exports){
@@ -16497,11 +16497,10 @@ module.exports = Backbone.View.extend({
 
     events: {
         'click button.delete': 'didClickDeleteButton',
-        'click .pet.lbl.pet-name': 'didClickPet',
-        'click .pet.lbl.pet-status': 'didClickPet',
-        'keypress .pet input': 'updateOnEnter',
-        'keydown .pet input': 'revertOnEscape',
-        'blur .pet input': 'close'
+        'click .pet.lbl.pet-name, .pet.lbl.pet-status': 'didClickPet',
+        'keypress .usr-input.pet': 'updateOnEnter',
+        'keydown .usr-input.pet': 'revertOnEscape',
+        'blur .usr-input.pet': 'close'
 
     },
 
@@ -16537,8 +16536,8 @@ module.exports = Backbone.View.extend({
         if (!this.$el.hasClass('edit')) {
             return;
         }
-        var pet_name = this.$el.find('.pet-entry input.pet-name').val().trim();
-        var pet_status = this.$el.find('.pet-entry input.pet-status').val().trim();
+        var pet_name = this.$el.find('.pet.usr-input.pet-name').val().trim();
+        var pet_status = this.$el.find('.pet.usr-input.pet-status').val().trim();
         this.trigger('petItem:edit', { id: this.id, name: pet_name, status: pet_status });
         this.toggle();
     },
