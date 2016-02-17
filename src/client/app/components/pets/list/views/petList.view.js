@@ -44,7 +44,7 @@ module.exports = Backbone.View.extend({
   },
 
   getTableBodyContainer: function() {
-    return this.$el.find('tbody');
+    return this.$el.find('tbody.pet-list');
   },
 
   render: function() {

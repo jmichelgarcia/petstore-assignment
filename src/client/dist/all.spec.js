@@ -17666,7 +17666,7 @@ module.exports = Backbone.View.extend({
     this.petListView = new PetListView;
     this.listenTo(this.petFormView, 'petForm:create', this.didRequestItemCreation);
     this.listenTo(this.petListView, 'petList:delete', this.didRequestItemDeletion);
-    this.listenTo(this.petListView, 'petList:update', this.didRequestItemEdit);
+    this.listenTo(this.petListView, 'petList:edit', this.didRequestItemEdit);
     this.loadPets();
   },
 
@@ -17679,7 +17679,8 @@ module.exports = Backbone.View.extend({
   },
 
   didRequestItemEdit: function(itemData) {
-    console.log('app.view.js - didRequestItemEdit');
+    console.log('app.view.js - didRequestItemEdit : data -> : '+itemData);
+    petService.updatePet(itemData).then(this.loadPets);
   },
   didRequestItemDeletion: function(itemData) {
     console.log('app.view.js - didRequestItemDeletion');
@@ -17907,7 +17908,7 @@ describe('App View', function() {
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<h3>Have a new Pet</h3>\n<div class=\"panel panel-default\"> \n	<div class=\"panel-heading\"> \n		Create new Pet\n	</div> \n	<div class=\"panel-body\"> \n		<form>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" id=\"basic-addon1\">Name</span>\n					<input type=\"text\" class=\"form-control pet-name\" placeholder=\"Pet Name\">\n				</div>\n			</div>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" id=\"basic-addon1\">Status</span>\n					<input type=\"text\" class=\"form-control pet-status\" placeholder=\"Pet Status\">\n				</div>\n			</div>\n			<div>\n				<button type=\"button\" class=\"btn btn-default btn-lg create\">Create</button>\n			</div>\n		</form>\n	</div>\n</div>\n";
+    return "<h3>Have a new Pet</h3>\n<div class=\"panel panel-default\"> \n	<div class=\"panel-heading\"> \n		Create new Pet\n	</div> \n	<div class=\"panel-body\"> \n		<form>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" id=\"basic-addon1\">Name</span>\n					<input type=\"text\" class=\"form-control pet-name\" placeholder=\"Pet Name\">\n				</div>\n			</div>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" id=\"basic-addon1\">Status</span>\n					<input type=\"text\" class=\"form-control pet-status\" placeholder=\"Pet Status\">\n				</div>\n			</div>\n			<div>\n				<button type=\"button\" class=\"btn btn-default create\">Create</button>\n			</div>\n		</form>\n	</div>\n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":22}],31:[function(require,module,exports){
@@ -18157,11 +18158,11 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
 
   return "    <td>\n        <div class=\"pet-entry\">\n            <label class=\"pet pet-name\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</label>\n            <input type=\"text\" class=\"form-control pet pet-name edit\" value="
+    + "</label>\n            <input type=\"text\" class=\"form-control pet pet-name\" value="
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + " />\n        </div>\n    </td>\n    <td>\n        <div class=\"pet-entry\">\n            <label class=\"pet pet-status\">"
     + alias4(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"status","hash":{},"data":data}) : helper)))
-    + "</label>\n            <input type=\"text\" class=\"form-control pet pet-status edit\" value="
+    + "</label>\n            <input type=\"text\" class=\"form-control pet pet-status\" value="
     + alias4(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"status","hash":{},"data":data}) : helper)))
     + " />\n        </div>\n    </td>\n    <td class=\"btn-group\">\n        <button type=\"button\" class=\"btn btn-danger delete\">Delete</button>\n    </td>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -18188,9 +18189,11 @@ module.exports = Backbone.View.extend({
 
     events: {
         'click button.delete': 'didClickDeleteButton',
-        'click button.update': 'didClickEditButton',
         'dblclick label.pet.pet-name': 'didDClickPet',
-        'dblclick label.pet.pet-status': 'didDClickPet'
+        'dblclick label.pet.pet-status': 'didDClickPet',
+        'keypress .pet-entry input': 'updateOnEnter',
+        'keydown .pet-entry input': 'revertOnEscape',
+        'blur .pet-entry input': 'close'
 
     },
 
@@ -18198,21 +18201,38 @@ module.exports = Backbone.View.extend({
         this.trigger('petItem:delete', this.model);
     },
 
-    didDClickPet: function () {
-
+    didDClickPet: function (e) {
         console.log('petItem.view.js - didDClickPet');
-        this.$el.find('.pet-entry .pet-name').toggleClass('edit');
-        this.$el.find('.pet-entry .pet-status').toggleClass('edit');
-
-        this.trigger('petItem:edit-mode', this.model);
+        this.toggle();
+        $(e.currentTarget).parent().find('input').focus();
     },
 
-    didClickEditButton: function (e) {
-        console.log('petItem.view.js - didClickEditButton');
-        //this.$el.find('.pet-name').html('</form><td><input type="text" placeholder="Pet name" class="form-control" value="'+this.model.get('name') +'" /></td>');
-        //this.$el.find('.pet-status').html('<td><input type="text" placeholder="Pet status" class="form-control" value="'+this.model.get('status') +'" /></td>');
-        //this.$el.find('.btn-info.edit').hide();
-        //this.$el.find('.btn-group').prepend('<button type="button" class="btn btn-info update">Update</button>');
+    toggle : function(){
+        this.$el.toggleClass('edit');
+    },
+
+    revertOnEscape: function (e) {
+        // 27 == ESC_KEY
+        if (e.which === 27) {
+            this.toggle();
+        }
+    },
+
+    updateOnEnter: function (e)
+    {
+        if (e.which === 13) {
+            this.close();
+        }
+    },
+
+    close: function (e) {
+        if (!this.$el.hasClass('edit')) {
+            return;
+        }
+        var pet_name = this.$el.find('.pet-entry input.pet-name').val().trim();
+        var pet_status = this.$el.find('.pet-entry input.pet-status').val().trim();
+        this.trigger('petItem:edit', { id: this.id, name: pet_name, status: pet_status });
+        this.toggle();
     },
 
     render: function () {
@@ -18329,7 +18349,6 @@ module.exports = Backbone.View.extend({
 
       self.listenTo(view, 'petItem:delete', self.didRequestItemDelete);
       self.listenTo(view, 'petItem:edit', self.didRequestItemEdit);
-      self.listenTo(view, 'petItem:edit-mode', self.didRequestEditMode);
 
       return view;
     });
@@ -18343,10 +18362,6 @@ module.exports = Backbone.View.extend({
   didRequestItemEdit: function(itemData) {
     console.log('petList.view.js - didRequestItemEdit');
     this.trigger('petList:edit', itemData);
-  },
-
-  didRequestEditMode: function(itemData) {
-    console.log('petList.view.js - didRequestEditMode');
   },
 
   getTableBodyContainer: function() {
@@ -18545,10 +18560,10 @@ var allPets = function() {
     });
   },
 
-    editPetById = function(id, props) {
+    updatePet = function(props) {
       return new RSVP.Promise(function(resolve, reject) {
         $.ajax({
-          url: '/api/pets/'+id ,
+          url: '/api/pets/'+props.id ,
           dataType: 'json',
           method: 'PUT',
           data: props
@@ -18580,7 +18595,7 @@ var allPets = function() {
 module.exports = {
   allPets: allPets,
   petById: petById,
-  editPetById: editPetById,
+  updatePet: updatePet,
   createPet: createPet,
   deletePet: deletePet
 }

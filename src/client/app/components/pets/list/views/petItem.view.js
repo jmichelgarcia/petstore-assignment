@@ -5,6 +5,7 @@ var template = require('../templates/pet-item.hbs');
 module.exports = Backbone.View.extend({
     tagName: 'tr',
     template: template,
+    className: 'pet-item',
 
     events: {
         'click button.delete': 'didClickDeleteButton',

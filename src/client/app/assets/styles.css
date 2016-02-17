@@ -70,31 +70,6 @@ h6, .h6 {
 
 
 /*
- * Main column and sidebar layout
- */
-
-.assignment-main {
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-/* Sidebar modules for boxing content */
-.sidebar-module {
-  padding: 15px;
-  margin: 0 -15px 15px;
-}
-.sidebar-module-inset {
-  padding: 15px;
-  background-color: #f5f5f5;
-  border-radius: 4px;
-}
-.sidebar-module-inset p:last-child,
-.sidebar-module-inset ul:last-child,
-.sidebar-module-inset ol:last-child {
-  margin-bottom: 0;
-}
-
-/*
  * Blog posts
  */
 
@@ -114,27 +89,19 @@ h6, .h6 {
  * Inline edit of Pets
  */
 
-tr.edit .pet-entry label
+.pet-list td span, .pet-list td input
 {
-  display:none;
-}
-
-tr .pet-entry input
-{
-  display:none;
-}
-
-tr.edit .pet-entry input
-{
-  display:block;
-}
-
-.pet-entry label
-{
+  margin:5px 5px 5px 0px;
   word-break: break-all;
-  padding: 5px 60px 5px 10px;
-  margin:0;
-  font-size:14px;
-  font-weight:normal;
-  width:100%;
+  padding: 5px 5px 5px 0px;
+}
+
+.edit.pet-list span.pet, .pet-list input.pet
+{
+  display:none;
+}
+
+.edit.pet-item input
+{
+  display:inherit;
 }

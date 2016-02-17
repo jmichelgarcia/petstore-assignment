@@ -7,11 +7,11 @@ Download dependencies using npm and bower
 -----------------------------------------
 Navigate to project root folder and type npm install, then bower install
 
+Build dist
+----------
+Navigate to project root and type grunt dist
+
 Start server
 ------------
 Navigate to project root folder and type 
 ./node_modules/json-server/bin/index.js --watch src/server/db.json --routes src/server/routes.json --static src/client
-
-Build dist
-----------
-Navigate to project root and type grunt dist

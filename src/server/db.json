@@ -1,34 +1,14 @@
 {
   "pets": [
     {
-      "id": 2,
+      "name": "Droppy",
+      "status": "Available",
+      "id": 1
+    },
+    {
       "name": "Pluto",
-      "status": "sold"
-    },
-    {
-      "name": "fkgjsdfkgjsdf",
-      "status": "sdfgjshdfjg",
-      "id": 3
-    },
-    {
-      "name": "kfgjskdfjgd",
-      "status": "dkfgjdkfgj",
-      "id": 4
-    },
-    {
-      "id": 6,
-      "name": "sdfgksdf,,,,,",
-      "status": "sdmglsdfklgj"
-    },
-    {
-      "name": "sdlsmfdqsdmfsdfqmsdfkqmfqksdfjmqsjdfmqjsdfmkj@",
-      "status": "msdkjsdmfkgj",
-      "id": 7
-    },
-    {
-      "name": "",
-      "status": "",
-      "id": 8
+      "status": "Sold",
+      "id": 2
     }
   ]
 }
