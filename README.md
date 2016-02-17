@@ -1,20 +1,30 @@
-Petstore Node.js app
-=======================
+HOW TO RUN
+==========
 
-This is based on a fork of https://github.com/pnowak2/petstore-excercise
+1. Download dependencies using npm 
+----------------------------------
+Navigate to project root folder and type npm install`.
+*Depending on your system, you might need to execute npm with admin rights.*
 
-Download dependencies using npm and bower
------------------------------------------
-Navigate to project root folder and type npm install, then bower install
+2. Download dependencies using bower
+------------------------------------
+Navigate to project root folder and type `bower install`.
 
-Build dist
-----------
-Navigate to project root and type grunt dist
+3. Build dist
+-------------
+Navigate to project root and type grunt dist`
 
-Start server
-------------
+4. Start server
+---------------
 Navigate to project root folder and type 
-./node_modules/json-server/bin/index.js --watch src/server/db.json --routes src/server/routes.json --static src/client
+`./node_modules/json-server/bin/index.js --watch src/server/db.json --routes src/server/routes.json --static src/client`
+
+ASSIGNMENT
+==========
+Introduction
+------------
+The Scrum team went through one week of development (of a two weeks sprint), and delivered this petstore project to CVS. Your role as a QA automation engineer, is to create the UI testing using [Robot](http://robotframework.org/) and [Selenium](http://www.seleniumhq.org/).
+You will find below the users stories and DoD that might guide you on your journey.
 
 User stories and DoD
 --------------------
