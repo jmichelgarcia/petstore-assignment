@@ -9,11 +9,11 @@ module.exports = Backbone.View.extend({
 
     events: {
         'click button.delete': 'didClickDeleteButton',
-        'dblclick label.pet.pet-name': 'didDClickPet',
-        'dblclick label.pet.pet-status': 'didDClickPet',
-        'keypress .pet-entry input': 'updateOnEnter',
-        'keydown .pet-entry input': 'revertOnEscape',
-        'blur .pet-entry input': 'close'
+        'click .pet.lbl.pet-name': 'didClickPet',
+        'click .pet.lbl.pet-status': 'didClickPet',
+        'keypress .pet input': 'updateOnEnter',
+        'keydown .pet input': 'revertOnEscape',
+        'blur .pet input': 'close'
 
     },
 
@@ -21,7 +21,7 @@ module.exports = Backbone.View.extend({
         this.trigger('petItem:delete', this.model);
     },
 
-    didDClickPet: function (e) {
+    didClickPet: function (e) {
         console.log('petItem.view.js - didDClickPet');
         this.toggle();
         $(e.currentTarget).parent().find('input').focus();

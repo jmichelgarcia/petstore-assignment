@@ -16378,7 +16378,7 @@ module.exports = Backbone.View.extend({
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<h3>Have a new Pet</h3>\n<div class=\"panel panel-default\"> \n	<div class=\"panel-heading\"> \n		Create new Pet\n	</div> \n	<div class=\"panel-body\"> \n		<form>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" id=\"basic-addon1\">Name</span>\n					<input type=\"text\" class=\"form-control pet-name\" placeholder=\"Pet Name\">\n				</div>\n			</div>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" id=\"basic-addon1\">Status</span>\n					<input type=\"text\" class=\"form-control pet-status\" placeholder=\"Pet Status\">\n				</div>\n			</div>\n			<div>\n				<button type=\"button\" class=\"btn btn-default create\">Create</button>\n			</div>\n		</form>\n	</div>\n</div>\n";
+    return "<div class=\"card card-block\">\n	<h3 class=\"card-title\">Create new Pet</h3>\n	<div>\n		<form>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" id=\"basic-addon1\">Name</span>\n					<input type=\"text\" class=\"form-control pet-name\" placeholder=\"Pet Name\">\n				</div>\n			</div>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" id=\"basic-addon1\">Status</span>\n					<input type=\"text\" class=\"form-control pet-status\" placeholder=\"Pet Status\">\n				</div>\n			</div>\n			<div>\n				<button type=\"button\" class=\"btn btn-primary create\">Create</button>\n			</div>\n		</form>\n	</div>\n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":23}],31:[function(require,module,exports){
@@ -16467,22 +16467,22 @@ var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<td>\n        <span class=\"pet pet-name\">"
+  return "<td>\n        <span class=\"pet lbl pet-name\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>\n        <input type=\"text\" class=\"pet pet-name\" value="
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "/>\n</td>\n<td>\n        <span class=\"pet pet-status\">"
+    + "/>\n</td>\n<td>\n        <span class=\"pet lbl pet-status\">"
     + alias4(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"status","hash":{},"data":data}) : helper)))
     + "</span>\n        <input type=\"text\" class=\"pet pet-status\" value="
     + alias4(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"status","hash":{},"data":data}) : helper)))
-    + "/>\n</td>\n<td class=\"btn-group\">\n    <button type=\"button\" class=\"btn btn-danger delete\">Delete</button>\n</td>\n\n";
+    + "/>\n</td>\n<td>\n    <button type=\"button\" class=\"btn btn-danger delete\">Delete</button>\n</td>\n\n";
 },"useData":true});
 
 },{"hbsfy/runtime":23}],35:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<h3>Manage your Pets</h3>\n<div class=\"panel panel-default\">\n    <div class=\"panel-heading\">\n        <h3 class=\"panel-title\">List of Pets</h3>\n    </div>\n    <div class=\"panel-body\">\n        <table class=\"table\">\n            <thead>\n            <tr>\n                <th>Name</th>\n                <th>Status</th>\n                <th>Action</th>\n            </tr>\n            </thead>\n            <tbody class=\"pet-list\">\n            </tbody>\n        </table>\n    </div>\n</div>\n";
+    return "<div class=\"card card-block\">\n    <h3 class=\"card-title\">List of Pets</h3>\n    <table class=\"table table-hover\">\n            <thead class=\"thead-default\">\n            <tr>\n                <th>Name</th>\n                <th>Status</th>\n                <th>Action</th>\n            </tr>\n            </thead>\n            <tbody class=\"pet-list\">\n            </tbody>\n    </table>\n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":23}],36:[function(require,module,exports){
@@ -16497,11 +16497,11 @@ module.exports = Backbone.View.extend({
 
     events: {
         'click button.delete': 'didClickDeleteButton',
-        'dblclick label.pet.pet-name': 'didDClickPet',
-        'dblclick label.pet.pet-status': 'didDClickPet',
-        'keypress .pet-entry input': 'updateOnEnter',
-        'keydown .pet-entry input': 'revertOnEscape',
-        'blur .pet-entry input': 'close'
+        'click .pet.lbl.pet-name': 'didClickPet',
+        'click .pet.lbl.pet-status': 'didClickPet',
+        'keypress .pet input': 'updateOnEnter',
+        'keydown .pet input': 'revertOnEscape',
+        'blur .pet input': 'close'
 
     },
 
@@ -16509,7 +16509,7 @@ module.exports = Backbone.View.extend({
         this.trigger('petItem:delete', this.model);
     },
 
-    didDClickPet: function (e) {
+    didClickPet: function (e) {
         console.log('petItem.view.js - didDClickPet');
         this.toggle();
         $(e.currentTarget).parent().find('input').focus();

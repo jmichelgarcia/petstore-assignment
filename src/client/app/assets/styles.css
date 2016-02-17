@@ -1,37 +1,9 @@
 /*
- * Globals
- */
-body {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  color: #555;
-}
-
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-  margin-top: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  color: #333;
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 970px;
-  }
-}
-
-/*
  * Masthead for nav
  */
 .assignment-masthead {
   background-color: #333;
   padding: 10px 0;
-  -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
-          box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
 }
 
 /* Nav links */
@@ -91,17 +63,29 @@ h6, .h6 {
 
 .pet-list td span, .pet-list td input
 {
-  margin:5px 5px 5px 0px;
+  margin:0;
   word-break: break-all;
-  padding: 5px 5px 5px 0px;
+  padding: 5px 5px 5px 5px;
+  display:inline-block;
 }
 
-.edit.pet-list span.pet, .pet-list input.pet
+.pet-list .edit .pet.lbl, .pet-list input.pet
 {
   display:none;
 }
 
-.edit.pet-item input
+.pet-list td span
+{
+  width:100%;
+}
+
+.pet-list .edit input.pet
 {
   display:inherit;
+  width:80%;
+}
+
+.card .table th, .card .table tr
+{
+  width:33%;
 }
