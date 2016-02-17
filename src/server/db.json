@@ -1,19 +1,39 @@
 {
   "pets": [
     {
-      "name": "lfgsdhlfgj",
-      "status": "sdjkfghsdlfjkg",
-      "id": 17
+      "id": 1,
+      "name": "Pluto",
+      "status": "Sold"
     },
     {
-      "name": "kdfjghdjkfh",
-      "status": "dfjghjdkfgh",
-      "id": 19
+      "name": "Mickey",
+      "status": "Sold",
+      "id": 2
     },
     {
-      "name": "Test",
-      "status": "disponible",
-      "id": 20
+      "name": "Little Mermaid",
+      "status": "Only one left",
+      "id": 3
+    },
+    {
+      "name": "Donald",
+      "status": "Out of stock",
+      "id": 4
+    },
+    {
+      "name": "Tiger",
+      "status": "Available",
+      "id": 5
+    },
+    {
+      "name": "Winnie the Pooh",
+      "status": "Available",
+      "id": 6
+    },
+    {
+      "name": "Nemo",
+      "status": "Available",
+      "id": 7
     }
   ]
 }

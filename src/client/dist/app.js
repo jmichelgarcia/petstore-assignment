@@ -16520,6 +16520,8 @@ module.exports = Backbone.View.extend({
 
     revertOnEscape: function (e) {
         // 27 == ESC_KEY
+        console.log('ESC');
+        console.log(e.which);
         if (e.which === 27) {
             this.toggle();
         }

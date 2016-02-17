@@ -15,3 +15,7 @@ Start server
 ------------
 Navigate to project root folder and type 
 ./node_modules/json-server/bin/index.js --watch src/server/db.json --routes src/server/routes.json --static src/client
+
+User stories and DoD
+--------------------
+[Link to the user stories and DoD](USER-STORIES.md)
