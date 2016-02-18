@@ -23,9 +23,16 @@ ASSIGNMENT
 ==========
 Introduction
 ------------
-The Scrum team went through one week of development (of a two weeks sprint), and delivered this petstore project to CVS. Your role as a QA automation engineer, is to create the UI testing using [Robot](http://robotframework.org/) and [Selenium](http://www.seleniumhq.org/).
+The Scrum team went through one week of development (of a two weeks sprint), and delivered this petstore project to CVS. Your role as a QA automation engineer, is to create the UI testing based on the user stories by using [Robot](http://robotframework.org/) and [Selenium](http://www.seleniumhq.org/).
 You will find below the users stories and DoD that might guide you on your journey.
+
+The product owner is going to use your automated tests to validate the work the team has done.
 
 User stories and DoD
 --------------------
-[Link to the user stories and DoD](USER-STORIES.md)
+[Link to the user stories and DoD](../assignment/USER-STORIES.md)
+
+SAMPLE
+======
+
+![alt text](../assignment/sample.png "App look")

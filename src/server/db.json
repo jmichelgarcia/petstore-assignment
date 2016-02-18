@@ -6,9 +6,9 @@
       "status": "Sold"
     },
     {
+      "id": 2,
       "name": "Mickey",
-      "status": "Sold",
-      "id": 2
+      "status": "Sold"
     },
     {
       "name": "Little Mermaid",
@@ -19,21 +19,6 @@
       "name": "Donald",
       "status": "Out of stock",
       "id": 4
-    },
-    {
-      "name": "Tiger",
-      "status": "Available",
-      "id": 5
-    },
-    {
-      "name": "Winnie the Pooh",
-      "status": "Available",
-      "id": 6
-    },
-    {
-      "name": "Nemo",
-      "status": "Available",
-      "id": 7
     }
   ]
 }

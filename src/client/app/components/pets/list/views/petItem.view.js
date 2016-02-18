@@ -48,10 +48,17 @@ module.exports = Backbone.View.extend({
         if (!this.$el.hasClass('edit')) {
             return;
         }
-        var pet_name = this.$el.find('.pet.usr-input.pet-name').val().trim();
-        var pet_status = this.$el.find('.pet.usr-input.pet-status').val().trim();
-        this.trigger('petItem:edit', { id: this.id, name: pet_name, status: pet_status });
+
+        this.trigger('petItem:edit', this.formData());
         this.toggle();
+    },
+
+    formData: function() {
+        return {
+            id: this.id,
+            name: this.$el.find('.pet.usr-input.pet-name').val().trim(),
+            status: this.$el.find('.pet.usr-input.pet-status').val().trim()
+        }
     },
 
     render: function () {

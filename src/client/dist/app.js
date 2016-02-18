@@ -16339,7 +16339,7 @@ module.exports = Backbone.View.extend({
   },
 
   didRequestItemEdit: function(itemData) {
-    console.log('app.view.js - didRequestItemEdit : data -> : '+itemData);
+    console.log('app.view.js - didRequestItemEdit');
     petService.updatePet(itemData).then(this.loadPets);
   },
   didRequestItemDeletion: function(itemData) {
@@ -16378,7 +16378,7 @@ module.exports = Backbone.View.extend({
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"card card-block\">\n	<h3 class=\"card-title\">Create new Pet</h3>\n	<div>\n		<form>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" id=\"basic-addon1\">Name</span>\n					<input type=\"text\" class=\"form-control pet-name\" placeholder=\"Pet Name\">\n				</div>\n			</div>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" id=\"basic-addon1\">Status</span>\n					<input type=\"text\" class=\"form-control pet-status\" placeholder=\"Pet Status\">\n				</div>\n			</div>\n			<div>\n				<button type=\"button\" class=\"btn btn-primary create\">Create</button>\n			</div>\n		</form>\n	</div>\n</div>\n";
+    return "<div class=\"card card-block\">\n	<h3 class=\"card-title\">Create new Pet</h3>\n	<div>\n		<form>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" >Name</span>\n					<input type=\"text\" class=\"form-control pet-name\" placeholder=\"Pet Name\">\n				</div>\n			</div>\n			<div class=\"form-group\">\n				<div class=\"input-group\">\n					<span class=\"input-group-addon\" >Status</span>\n					<input type=\"text\" class=\"form-control pet-status\" placeholder=\"Pet Status\">\n				</div>\n			</div>\n			<div>\n				<button type=\"button\" id=\"btn-create\" class=\"btn btn-primary create\">Create</button>\n			</div>\n		</form>\n	</div>\n</div>\n";
 },"useData":true});
 
 },{"hbsfy/runtime":23}],31:[function(require,module,exports){
@@ -16520,8 +16520,6 @@ module.exports = Backbone.View.extend({
 
     revertOnEscape: function (e) {
         // 27 == ESC_KEY
-        console.log('ESC');
-        console.log(e.which);
         if (e.which === 27) {
             this.toggle();
         }
@@ -16538,10 +16536,17 @@ module.exports = Backbone.View.extend({
         if (!this.$el.hasClass('edit')) {
             return;
         }
-        var pet_name = this.$el.find('.pet.usr-input.pet-name').val().trim();
-        var pet_status = this.$el.find('.pet.usr-input.pet-status').val().trim();
-        this.trigger('petItem:edit', { id: this.id, name: pet_name, status: pet_status });
+
+        this.trigger('petItem:edit', this.formData());
         this.toggle();
+    },
+
+    formData: function() {
+        return {
+            id: this.id,
+            name: this.$el.find('.pet.usr-input.pet-name').val().trim(),
+            status: this.$el.find('.pet.usr-input.pet-status').val().trim()
+        }
     },
 
     render: function () {

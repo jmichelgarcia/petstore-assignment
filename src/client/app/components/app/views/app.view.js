@@ -25,7 +25,7 @@ module.exports = Backbone.View.extend({
   },
 
   didRequestItemEdit: function(itemData) {
-    console.log('app.view.js - didRequestItemEdit : data -> : '+itemData);
+    console.log('app.view.js - didRequestItemEdit');
     petService.updatePet(itemData).then(this.loadPets);
   },
   didRequestItemDeletion: function(itemData) {
