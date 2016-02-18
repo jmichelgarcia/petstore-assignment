@@ -80,4 +80,4 @@ As a pet store user I want to access my resource by using the following REST API
 
 Acceptance Criteria
 -------------------
-API respects this : [Swagger definition file](../swagger.html)
+API respects this : [Swagger definition file](./swagger.html)
