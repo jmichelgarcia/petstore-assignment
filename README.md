@@ -30,9 +30,9 @@ The product owner is going to use your automated tests to validate the work the 
 
 User stories and DoD
 --------------------
-[Link to the user stories and DoD](../assignment/USER-STORIES.md)
+[Link to the user stories and DoD](./assignment/USER-STORIES.md)
 
 SAMPLE
 ======
 
-![alt text](../assignment/sample.png "App look")
+![alt text](./assignment/sample.png "App look")
