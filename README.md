@@ -3,7 +3,7 @@ HOW TO RUN
 
 1. Download dependencies using npm 
 ----------------------------------
-Navigate to project root folder and type npm install`.
+Navigate to project root folder and type `npm install`.
 *Depending on your system, you might need to execute npm with admin rights.*
 
 2. Download dependencies using bower
@@ -12,12 +12,17 @@ Navigate to project root folder and type `bower install`.
 
 3. Build dist
 -------------
-Navigate to project root and type grunt dist`
+Navigate to project root and type `grunt dist`.
 
 4. Start server
 ---------------
 Navigate to project root folder and type 
 `./node_modules/json-server/bin/index.js --watch src/server/db.json --routes src/server/routes.json --static src/client`
+
+5. Accessing 
+------------
+- http://localhost:3000 : Petstore app
+- http://localhost:3000/swagger.html : Static Swagger definition
 
 ASSIGNMENT
 ==========
