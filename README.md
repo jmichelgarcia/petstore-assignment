@@ -21,8 +21,8 @@ Navigate to project root folder and type
 
 5. Accessing 
 ------------
--[Petstore webapp](http://localhost:3000)
--[Static Swagger definition](http://localhost:3000/swagger.html)
+[Petstore webapp](http://localhost:3000)
+[Static Swagger definition](http://localhost:3000/swagger.html)
 
 ASSIGNMENT
 ==========
