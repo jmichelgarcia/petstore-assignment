@@ -6,7 +6,7 @@ DoD
 
 US0001 - Viewing the current date
 =================================
-Story points captured during Spring planning : 5 
+Story points captured during Spring planning : 5
 
 Description
 -----------
@@ -14,7 +14,7 @@ As a pet store user I want to see the current date displayed on the top banner s
 
 Acceptance Criteria
 -------------------
-- Date is displayed on the format DD-MM-YYYY, ie: 01/12/2016
+- Date is displayed on the format DD-MM-YYYY, ie: 01-12-2016
 - The background color of the banner is black
 
 US0002 - Viewing my pets
@@ -43,7 +43,7 @@ Acceptance Criteria
 -------------------
 - `Name` and `Status` should be **mandatory** fields to add a new pet.
 - After filling the form, adding a new pet should be possible by typing the keyboard `Enter key` or by clicking on a `Create button`.
-- The following sequence should be respected in terms of accessibility (using the tab key) : 
+- The following sequence should be respected in terms of accessibility (using the tab key) :
 
 ![alt text](../assignment/acessibility.png "Accessibility path when adding a new pet")
 
@@ -70,10 +70,10 @@ Story points captured during Spring planning : 20
 
 Description
 -----------
-As a pet store user I want to access my resource by using the following REST API : 
+As a pet store user I want to access my resource by using the following REST API :
 
-- GET /api/pets 
-- GET /api/pets/{id} 
+- GET /api/pets
+- GET /api/pets/{id}
 - PUT /api/pets/{id}
 - DELETE /api/pets/{id}
 - POST /api/pets
