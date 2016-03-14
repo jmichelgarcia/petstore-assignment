@@ -17,7 +17,7 @@ How to run the application
 Prerequisites to install
 ------------------------
 Version 4.3.1 of Node.js.
-* The team tested the app on MacOSX & Windows 7, it should work on Linux and win7 as well.*
+*The team tested the app on MacOSX & Windows 7, it should work on Linux and win7 as well.*
 
 Download app dependencies
 -------------------------
