@@ -41,10 +41,10 @@ Accessing the app
 
 Useful 
 ------------
-[Node.js website](https://nodejs.org/en/download/)
-[Python](https://www.python.org/downloads/)
-[Robot](http://robotframework.org/)
-[Selenium](http://www.seleniumhq.org/)
-[Eclipse](https://eclipse.org/downloads/)
-[Robot - Eclipse IDE](https://github.com/NitorCreations/RobotFramework-EclipseIDE)
-[JMeter](http://jmeter.apache.org/)
+- [Node.js website](https://nodejs.org/en/download/)
+- [Python](https://www.python.org/downloads/)
+- [Robot](http://robotframework.org/)
+- [Selenium](http://www.seleniumhq.org/)
+- [Eclipse](https://eclipse.org/downloads/)
+- [Robot - Eclipse IDE](https://github.com/NitorCreations/RobotFramework-EclipseIDE)
+- [JMeter](http://jmeter.apache.org/)
