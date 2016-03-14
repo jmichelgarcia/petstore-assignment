@@ -16,31 +16,33 @@ How to run the application
 ==========================
 Prerequisites to install
 ------------------------
-Version 4.3.1 of Node.js.
-*The team tested the app on MacOSX & Windows 7, it should work on Linux and win7 as well.*
+*The team tested the app on MacOSX & Windows 7, it should work on Linux and win7 as well*
+- Version 4.3.1 of Node.js.
 
 Download app dependencies
 -------------------------
-Navigate to project root folder and type `npm install`. *Depending on your system, you might need to execute npm with admin rights.*
-Navigate to project root folder and type `bower install`.
+*Depending on your system, you might need to execute npm with admin rights.*
+
+- Navigate to project root folder and type `npm install`. 
+- Navigate to project root folder and type `bower install`.
 
 Build the app
 -------------
-Navigate to project root and type `grunt dist`.
+- Navigate to project root and type `grunt dist`.
 
 Run the app
 -----------
-Navigate to project root folder and type
+- Navigate to project root folder and type
 `./node_modules/json-server/bin/index.js --watch src/server/db.json --routes src/server/routes.json --static src/client`.
 
 Accessing the app
 -----------------
-[Petstore webapp](http://localhost:3000)
+[Petstore web app](http://localhost:3000)
 
 Useful 
 ------------
 [Node.js website](https://nodejs.org/en/download/)
-[Pyhton](https://www.python.org/downloads/)
+[Python](https://www.python.org/downloads/)
 [Robot](http://robotframework.org/)
 [Selenium](http://www.seleniumhq.org/)
 [Eclipse](https://eclipse.org/downloads/)
