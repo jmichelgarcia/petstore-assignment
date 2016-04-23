@@ -6,7 +6,8 @@ The Scrum team went through one week of development (of a two weeks sprint), and
 In accordance to the NFR in our definition of done, you're also encouraged to verify and assess the performance of the application by using a tool like **JMeter** or any other tool of preference.
 You will find below the users stories and DoD that might guide you on your journey. Be sure to test all of the user stories, but your tests may not all pass.
 
-The product owner is going to use your automated tests to validate the work the team has done.
+**Expected output** : The product owner is going to execute your automated tests to assess the work the team has done. 
+We expect you to provide minimal instructions on how to re-execute your tests.
 
 User stories and definition of Done
 -----------------------------------
