@@ -1,5 +1,4 @@
 # Assignment
-
 ## Intro
 
 The Scrum team went through one week of development (of a two weeks sprint), and delivered this petstore project to our GIT. Your role as a QA automation engineer, is to automate the UI testing (*acceptance testing*) based on the user stories by using **Robot** and **Selenium**.
@@ -7,10 +6,10 @@ In accordance to the NFR in our definition of done, you're also encouraged to ve
 You will find below the users stories and DoD that might guide you on your journey. Be sure to test all of the user stories, but your tests may not all pass.
 
 ## Expected output
-**The product owner** is going to execute your automated tests to assess the work the team has done.
-We expect you to provide minimal instructions on how to re-execute your tests.
+**The product owner** is going to execute your automated tests against the stable DEV environment in order to assess if the stories can be moved from *Completed* to *Accepted*.
+To make this possible, we expect you to provide minimal instructions on how to re-execute your tests.
 
-**A QA engineer** will do a pair review of your code to asses its quality and coherence.
+**A QA engineer** will do a pair review of your code to asses its quality, coherence, and portability.
 
 # The Kanban board at mid sprint
 ![Kanban Board](./assignment/Kanban Board.png "Kanban board at mid sprint")
