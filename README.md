@@ -3,7 +3,10 @@
 
 The Scrum team went through one week of development (of a two weeks sprint), and delivered this petstore project to our GIT. Your role as a QA automation engineer, is to automate the UI testing (*acceptance testing*) based on the user stories by using **Robot** and **Selenium**.
 In accordance to the NFR in our definition of done, you're also encouraged to verify and assess the performance of the application by using a tool like **JMeter** or any other tool of preference.
-You will find below the users stories and DoD that might guide you on your journey. Be sure to test all of the user stories, but your tests may not all pass.
+You will find below the users stories and DoD that might guide you on your journey.
+
+Prioritizing your work is advised in case you run out of time.  
+**Choose wisely** !
 
 ## Expected output
 **The product owner** is going to execute your automated tests against the stable DEV environment in order to assess if the stories can be moved from *Completed* to *Accepted*.
